@@ -137,7 +137,7 @@ func recordFieldToStruct(typ types.Type, done map[*types.Named]bool, fieldToStru
 			return
 		}
 		done[typ] = true
-		recordFieldToStruct(typ.Underlying(), done, fieldToStruct)
+		recordFieldToStruct(typ.Origin().Underlying(), done, fieldToStruct)
 	case *types.Struct:
 		for field := range typ.Fields() {
 			if field != field.Origin() {
